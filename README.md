@@ -16,6 +16,33 @@ The results were analyzed in terms of structural stability, interface properties
 
 \## Repository structure
 
+3LXR_MD_analysis/
+├── 1_Molecular_Dynamics/
+│   ├── 280K/
+│   ├── 300K/
+│   ├── 320K/
+│   └── pdb/
+│       ├── initial_pdb/
+│       └── output_pdb/
+│
+├── 2_AlphaFold/
+│   ├── 3lxr_sequences.fasta
+│   └── AF_predict_3LXR.pdb
+│
+├── 3_plots/
+│   ├── 1_RMSD/
+│   ├── 2_RMSF/
+│   ├── 3_Rg/
+│   ├── 4_Interface_area/
+│   ├── 5_H-bonds/
+│   ├── 6_Secondary_structure/
+│   ├── 7_AlphaFold_RMSD/
+│   └── 8_AlphaFold_Interface_area/
+│
+└── README.md
+
+
+
 \### 1_Molecular_Dynamics/
 
 Contains all MD simulation files organized by temperature.
