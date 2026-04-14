@@ -1,0 +1,147 @@
+# 1. Generate topology, position restraint, and processed structure
+/software/gromacs-2024.3/build/bin/gmx_mpi pdb2gmx -f 3lxr_clean.pdb -o 3lxr_processed.gro -p topol.top -i posre.itp -water tip3p
+# Select force field: CHARMM36_jul2022
+
+# 2. Define simulation box
+/software/gromacs-2024.3/build/bin/gmx_mpi editconf \
+-f 3lxr_processed.gro \
+-o 3lxr_newbox.gro \
+-c -d 1.0 -bt cubic
+# Output: 3lxr_newbox.gro (protein + box), box size: 10.1 nm³
+
+# 3. Solvate the system
+/software/gromacs-2024.3/build/bin/gmx_mpi solvate \
+-cp 3lxr_newbox.gro \
+-cs spc216.gro \
+-o 3lxr_solv.gro \
+-p topol.top
+# Output: 3lxr_solv.gro (protein + box + water)
+
+# 4. Prepare for ion addition
+/software/gromacs-2024.3/build/bin/gmx_mpi grompp \
+-f ../mdp/ions.mdp \
+-c 3lxr_solv.gro \
+-p topol.top \
+-o ions.tpr
+# Output: ions.tpr
+
+# 5. Add ions to neutralize
+/software/gromacs-2024.3/build/bin/gmx_mpi genion \
+-s ions.tpr \
+-o 3lxr_solv_ions.gro \
+-p topol.top \
+-pname NA \
+-nname CL \
+-neutral
+# Select group: SOL
+# Added 3 Na+ ions, output: 3lxr_solv_ions.gro
+
+# 6. Energy minimization - prepare
+/software/gromacs-2024.3/build/bin/gmx_mpi grompp \
+-f ../mdp/minim.mdp \
+-c 3lxr_solv_ions.gro \
+-p topol.top \
+-o em.tpr
+
+# 7. Run energy minimization
+/software/gromacs-2024.3/build/bin/gmx_mpi mdrun -v -deffnm em
+# Potential Energy = -1.62e+06 kJ/mol 
+
+# Validation
+/software/gromacs-2024.3/build/bin/gmx_mpi energy -f em.edr -o potential.xvg
+# Potential Average = -1.57e+06 kJ/mol
+
+# 8. NVT equilibration - prepare
+/software/gromacs-2024.3/build/bin/gmx_mpi grompp \
+-f ../mdp/nvt_280K.mdp \
+-c em.gro \
+-r em.gro \
+-p topol.top \
+-o nvt_280.tpr
+
+# 9. Run 32-ps NVT equilibration
+/software/gromacs-2024.3/build/bin/gmx_mpi mdrun -deffnm nvt_280
+
+# Check temperature stability
+/software/gromacs-2024.3/build/bin/gmx_mpi energy \
+-f nvt_280.edr \
+-o temperature_280.xvg
+# Temperature: 279.36 K
+
+# 10. NPT equilibration - prepare
+/software/gromacs-2024.3/build/bin/gmx_mpi grompp \
+-f ../mdp/npt_280.mdp \
+-c nvt_280.gro \
+-r nvt_280.gro \
+-t nvt_280.cpt \
+-p topol.top \
+-o npt_280.tpr
+
+# 11. Run 40-ps NPT equilibration
+/software/gromacs-2024.3/build/bin/gmx_mpi mdrun -deffnm npt_280
+
+# Check pressure and density
+/software/gromacs-2024.3/build/bin/gmx_mpi energy -f npt_280.edr -o density_280.xvg
+# Density: 1048.76 kg/m³
+/software/gromacs-2024.3/build/bin/gmx_mpi energy -f npt_280.edr -o pressure_280.xvg
+# Pressure: -6.00 bar
+
+# 12. Production MD - prepare
+/software/gromacs-2024.3/build/bin/gmx_mpi grompp \
+-f ../mdp/md_280K_20ns.mdp \
+-c npt_280.gro \
+-t npt_280.cpt \
+-p topol.top \
+-o md_280K_20ns.tpr
+
+# Run production MD (20 ns)
+/software/gromacs-2024.3/build/bin/gmx_mpi mdrun -deffnm md_280K_20ns
+# Runtime for 20 ns: 1h 42min
+
+# 13. Trajectory analysis
+## Remove PBC effects
+/software/gromacs-2024.3/build/bin/gmx_mpi trjconv \
+-s md_280K_20ns.tpr \
+-f md_280K_20ns.xtc \
+-o md_280K_20ns_noPBC.xtc \
+-pbc mol -center
+# Select: Protein, then System
+
+## RMSD relative to equilibrated structure
+/software/gromacs-2024.3/build/bin/gmx_mpi rms \
+-s md_280K_20ns.tpr \
+-f md_280K_20ns_noPBC.xtc \
+-o rmsd_280_equil.xvg \
+-tu ns
+# Select: Backbone, Backbone
+
+## RMSD relative to initial structure
+/software/gromacs-2024.3/build/bin/gmx_mpi rms \
+-s em.tpr \
+-f md_280K_20ns_noPBC.xtc \
+-o rmsd_280_xtal.xvg \
+-tu ns
+# Select: Backbone, Backbone
+
+## RMSF
+/software/gromacs-2024.3/build/bin/gmx_mpi rmsf \
+-s md_280K_20ns.tpr \
+-f md_280K_20ns_noPBC.xtc \
+-o rmsf_ca.xvg \
+-res
+# Select: C-alpha
+
+## Radius of gyration
+/software/gromacs-2024.3/build/bin/gmx_mpi gyrate \
+-s md_280K_20ns.tpr \
+-f md_280K_20ns_noPBC.xtc \
+-o gyrate.xvg
+# Select: Protein
+
+# 14. Extract representative structure at 18 ns
+/software/gromacs-2024.3/build/bin/gmx_mpi trjconv \
+-s md_280K_20ns.tpr \
+-f md_280K_20ns_noPBC.xtc \
+-o final_280K_18ns.pdb \
+-dump 18000
+# Select: System

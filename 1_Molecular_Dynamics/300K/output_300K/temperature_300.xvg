@@ -1,0 +1,57 @@
+# This file was created Thu Mar 19 15:49:21 2026
+# Created by:
+#                      :-) GROMACS - gmx energy, 2024.3 (-:
+# 
+# Executable:   /software/gromacs-2024.3/build/bin/gmx_mpi
+# Data prefix:  /software/gromacs-2024.3 (source tree)
+# Working dir:  /home/cmml3_xinyue/MD_project/retry_300K
+# Command line:
+#   gmx_mpi energy -f nvt_300.edr -o temperature_300.xvg
+# gmx energy is part of G R O M A C S:
+#
+# Giant Rising Ordinary Mutants for A Clerical Setup
+#
+@    title "GROMACS Energies"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "(K)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Temperature"
+    0.000000  300.259064
+    1.000000  295.034424
+    2.000000  299.453278
+    3.000000  298.016205
+    4.000000  299.626068
+    5.000000  301.195282
+    6.000000  299.350983
+    7.000000  300.331024
+    8.000000  298.317993
+    9.000000  298.764923
+   10.000000  299.081818
+   11.000000  302.032227
+   12.000000  299.906647
+   13.000000  301.121521
+   14.000000  300.864960
+   15.000000  299.498566
+   16.000000  300.902649
+   17.000000  298.671234
+   18.000000  300.606354
+   19.000000  299.856598
+   20.000000  299.651428
+   21.000000  300.659058
+   22.000000  298.770782
+   23.000000  297.897858
+   24.000000  300.756775
+   25.000000  300.387360
+   26.000000  299.657471
+   27.000000  299.966675
+   28.000000  298.805298
+   29.000000  300.367371
+   30.000000  299.834961
+   31.000000  299.903503
+   32.000000  300.654846

@@ -1,0 +1,57 @@
+# This file was created Thu Mar 19 09:45:45 2026
+# Created by:
+#                      :-) GROMACS - gmx energy, 2024.3 (-:
+# 
+# Executable:   /software/gromacs-2024.3/build/bin/gmx_mpi
+# Data prefix:  /software/gromacs-2024.3 (source tree)
+# Working dir:  /home/cmml3_xinyue/MD_project/320k
+# Command line:
+#   gmx_mpi energy -f nvt_320.edr -o temperature_320.xvg
+# gmx energy is part of G R O M A C S:
+#
+# Getting the Right Output Means no Artefacts in Calculating Stuff
+#
+@    title "GROMACS Energies"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "(K)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Temperature"
+    0.000000  320.437225
+    1.000000  314.690033
+    2.000000  318.704956
+    3.000000  319.389496
+    4.000000  320.924622
+    5.000000  320.095703
+    6.000000  320.000641
+    7.000000  319.246521
+    8.000000  318.263306
+    9.000000  321.664703
+   10.000000  319.499908
+   11.000000  320.464325
+   12.000000  321.248138
+   13.000000  319.612976
+   14.000000  319.369720
+   15.000000  320.750031
+   16.000000  319.920868
+   17.000000  319.453308
+   18.000000  318.893860
+   19.000000  318.791534
+   20.000000  318.749725
+   21.000000  319.227600
+   22.000000  317.997284
+   23.000000  320.388885
+   24.000000  320.645050
+   25.000000  318.981567
+   26.000000  320.788361
+   27.000000  318.837006
+   28.000000  320.545044
+   29.000000  319.883118
+   30.000000  320.582458
+   31.000000  320.040710
+   32.000000  321.979767

@@ -1,0 +1,57 @@
+# This file was created Wed Mar 11 19:45:33 2026
+# Created by:
+#                      :-) GROMACS - gmx energy, 2024.3 (-:
+# 
+# Executable:   /software/gromacs-2024.3/build/bin/gmx_mpi
+# Data prefix:  /software/gromacs-2024.3 (source tree)
+# Working dir:  /home/cmml3_xinyue/MD_project/pdb
+# Command line:
+#   gmx_mpi energy -f nvt_280.edr -o temperature_280.xvg
+# gmx energy is part of G R O M A C S:
+#
+# Green Red Orange Magenta Azure Cyan Skyblue
+#
+@    title "GROMACS Energies"
+@    xaxis  label "Time (ps)"
+@    yaxis  label "(K)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "Temperature"
+    0.000000  279.921967
+    1.000000  275.048950
+    2.000000  280.486511
+    3.000000  280.143799
+    4.000000  280.749756
+    5.000000  278.672089
+    6.000000  282.537659
+    7.000000  278.263916
+    8.000000  279.289459
+    9.000000  279.590668
+   10.000000  280.564697
+   11.000000  278.681976
+   12.000000  279.980225
+   13.000000  279.314941
+   14.000000  277.621948
+   15.000000  281.551117
+   16.000000  280.516418
+   17.000000  280.522705
+   18.000000  279.395996
+   19.000000  281.133240
+   20.000000  280.173096
+   21.000000  279.546570
+   22.000000  279.645996
+   23.000000  281.348999
+   24.000000  281.408875
+   25.000000  280.860779
+   26.000000  279.491547
+   27.000000  279.816559
+   28.000000  279.049622
+   29.000000  279.177551
+   30.000000  280.387756
+   31.000000  279.022827
+   32.000000  279.637329
