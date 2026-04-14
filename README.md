@@ -59,7 +59,7 @@ Each temperature folder includes:
 The `pdb/` folder contains:
 
 1. `initial_pdb/`: cleaned starting structure for MD
-2. `output_pdb/`: cleaned representative structures extracted at 18 ns, , used as input for downstream analyses (PROCHECK, PISA, PyMOL, DSSP)
+2. `output_pdb/`: cleaned representative structures extracted at 18 ns, used as input for downstream analyses (PROCHECK, PISA, PyMOL, DSSP)
 
 
 
@@ -111,5 +111,5 @@ Additional analyses were performed as follows:
 3. Hydrogen bonds were analysed in PyMOL (v2.5.8)
 4. Secondary structure was analysed using DSSP (https://pdb-redo.eu/dssp)
 
-5. AlphaFold-Multimer prediction was performed using ColabFold based on the input sequences  `3lxr_sequences.fasta`(https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb).
+5. AlphaFold-Multimer prediction was performed using ColabFold based on the input sequences  `3lxr_sequences.fasta`  (https://colab.research.google.com/github/sokrypton/ColabFold/blob/main/AlphaFold2.ipynb).
 
