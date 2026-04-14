@@ -6,9 +6,9 @@ This project investigates the effect of temperature on the structural stability 
 
 Simulations were carried out at three temperatures:
 
-\- 280 K
-\- 300 K
-\- 320 K
+1. 280 K
+2. 300 K
+3. 320 K
 
 The results were analyzed in terms of structural stability, interface properties, and comparison with an AlphaFold-Multimer model.
 
@@ -22,13 +22,14 @@ Contains all MD simulation files organized by temperature.
 
 Each temperature folder includes:
 
-\- `input_*`: GROMACS parameter files (.mdp)
-\- `output_*`: analysis outputs (.xvg) and the final structure extracted at 18 ns (.pdb)
-\- `script_*.txt`: command history used to run the simulation on the server
+1. `input_*`: GROMACS parameter files (.mdp)
+2. `output_*`: analysis outputs (.xvg) and the final structure extracted at 18 ns (.pdb)
+3.  `script_*.txt`: command history used to run the simulation on the server
 
 The `pdb/` folder contains:
-\- `initial_pdb/`: cleaned starting structure for MD
-\- `output_pdb/`: cleaned representative structures extracted at 18 ns, , used as input for downstream analyses (PROCHECK, PISA, PyMOL, DSSP)
+
+1. `initial_pdb/`: cleaned starting structure for MD
+2. `output_pdb/`: cleaned representative structures extracted at 18 ns, , used as input for downstream analyses (PROCHECK, PISA, PyMOL, DSSP)
 
 
 
@@ -36,10 +37,8 @@ The `pdb/` folder contains:
 
 Contains files related to AlphaFold-Multimer prediction:
 
-
-
-\- `3lxr_sequences.fasta`: input sequences
-\- `AF_predict_3LXR.pdb`: predicted complex structure
+1. `3lxr_sequences.fasta`: input sequences
+2.  `AF_predict_3LXR.pdb`: predicted complex structure
 
 
 
