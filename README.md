@@ -16,8 +16,7 @@ The results were analyzed in terms of structural stability, interface properties
 
 \## Repository structure
 
-
-\```text
+```
 3LXR_MD_analysis/
 ├── 1_Molecular_Dynamics/
 │   ├── 280K/
@@ -42,6 +41,10 @@ The results were analyzed in terms of structural stability, interface properties
 │   └── 8_AlphaFold_Interface_area/
 │
 └── README.md
+```
+
+
+
 
 \### 1_Molecular_Dynamics/
 
