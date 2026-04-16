@@ -1,6 +1,8 @@
-\# 3LXR Molecular Dynamics and AlphaFold Analysis
+# 3LXR Molecular Dynamics and AlphaFold Analysis
 
-\## Overview
+
+
+## **Overview**
 
 This project investigates the effect of temperature on the structural stability of the 3LXR complex using molecular dynamics (MD) simulations.
 
@@ -14,7 +16,7 @@ The results were analyzed in terms of structural stability, interface properties
 
 
 
-\## Repository structure
+## **Repository structure**
 
 ```
 3LXR_MD_analysis/
@@ -45,8 +47,7 @@ The results were analyzed in terms of structural stability, interface properties
 
 
 
-
-\### 1_Molecular_Dynamics/
+### 1_Molecular_Dynamics/
 
 Contains all MD simulation files organized by temperature.
 
@@ -63,7 +64,7 @@ The `pdb/` folder contains:
 
 
 
-\### 2_AlphaFold/
+### 2_AlphaFold/
 
 Contains files related to AlphaFold-Multimer prediction:
 
@@ -72,7 +73,7 @@ Contains files related to AlphaFold-Multimer prediction:
 
 
 
-\### 3_plots/
+### 3_plots/
 
 Contains all figures used in the Results section:
 
@@ -87,7 +88,7 @@ Contains all figures used in the Results section:
 
 
 
-\## Methods summary
+## Methods summary
 
 The MD simulations were performed using GROMACS 2024.3 with the CHARMM36 force field and TIP3P water model.
 
